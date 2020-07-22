@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, NavLink } from 'react-router-dom'
 import Login from './components/login'
 import PrivateRoute from './components/privateRoute'
@@ -7,6 +7,9 @@ import AddFriend from './components/addFriend'
 import './App.css';
 
 function App() {
+
+  const [friends, setFriends] = useState([])
+  
   return (
     <div className="App">
       <header>
@@ -16,8 +19,13 @@ function App() {
       </header>
       <Route exact path='/' component={Login} />
 
-      <PrivateRoute path='/friends' component={FriendsList} />
-      <PrivateRoute path='/addfriend' component={AddFriend} />
+      <PrivateRoute path='/friends' >
+        <FriendsList setFriends={setFriends} friends={friends} />
+      </PrivateRoute>
+
+      <PrivateRoute path='/addfriend' >
+        <AddFriend setFriends={setFriends} />
+      </PrivateRoute>
     </div>
   );
 }

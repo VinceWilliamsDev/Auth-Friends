@@ -30,12 +30,16 @@ const Login = () => {
             .then(res => {
                 console.log(res)
                 localStorage.setItem('token', res.data.payload)
+                setFormValues(initialFormValues)
                 push('/friends')
             })
             .catch(err => {
-                // console.log(err)
-                setErrors(err.data.error)
+                console.log(err)
+                // setErrors(err.error)
+                setFormValues(initialFormValues)
             })
+
+            
     }
 
     return(
