@@ -14,10 +14,10 @@ function App() {
         <NavLink to='/friends' >Friends</NavLink>
         <NavLink to='/addfriend'>Add Friend</NavLink>
       </header>
-      <Route to='/' component={Login} />
+      <Route exact path='/' component={Login} />
 
-      <PrivateRoute to='/friends' component={FriendsList} />
-      <PrivateRoute to='/addfriend' component={AddFriend} />
+      <PrivateRoute path='/friends' component={FriendsList} />
+      <PrivateRoute path='/addfriend' component={AddFriend} />
     </div>
   );
 }
